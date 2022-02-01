@@ -5,29 +5,26 @@ export const readDB = () => {
   return JSON.parse(rawdata.toString());
 };
 
-export const findProductById = (id) => {
-    return readDB().find(({ productId }) => productId === id);
+export const findProductById = (id, db = readDB()) => {
+    return db.find(({ productId, isAvailable }) => productId === id && isAvailable);
 }
 
-export const findIndexOfProduct = (id) => {
-   return readDB().findIndex((prod) => prod.productId == id)
+export const findIndexOfProduct = (id, db = readDB()) => {
+   return db.findIndex((prod) => prod.productId == id)
 }
 
 export const changeDataInDB = (data) => {
-    console.log("data", data);
     return writeFileSync('src/db/database.json', JSON.stringify(data));
 }
 
-export const findProductsByIds = (ids) => {
+export const findProductsByIds = (ids, db = readDB()) => {
   const itemsFound = [];
-
   ids.forEach((e, index) => {
-    const findProduct = findProductById(e);
+    const findProduct = findProductById(e, db);
     if (findProduct) {
       return itemsFound.push(findProduct);
     } else {
-      console.log(`product ${e} not found**`);
-      throw `product ${e} not found**`;
+      throw new Error(`product with ID ${e} not found**`);
     }
   });
   return itemsFound;
@@ -41,9 +38,9 @@ export const errorResponse = (code, error) => {
   };
 };
 
-export const successResponse = (data) => {
+export const successResponse = (code, data) => {
   return {
-    code: 200,
+    code,
     status: 'success',
     data,
   };
