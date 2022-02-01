@@ -1,31 +1,56 @@
-[{
-    "productId": 1, 
-    "name": "Iphone 13",
-    "price": "1399",
-    "isAvailable": true
-}, {
-    "productId": 2, 
-    "name": "Iphone 12",
-    "price": "1299",
-    "isAvailable": true
-}, {
-    "productId": 3, 
-    "name": "Iphone 11",
-    "price": "1099",
-    "isAvailable": false
-}, {
-    "productId": 4, 
-    "name": "Iphone 10",
-    "price": "999",
-    "isAvailable": true
-}, {
-    "productId": 5, 
-    "name": "Iphone 9",
-    "price": "899",
-    "isAvailable": false
-}, {
-    "productId": 6, 
-    "name": "Iphone 8",
-    "price": "799",
-    "isAvailable": false
-}]
+[
+    {
+        "productId": "1",
+        "name": "Iphone 13",
+        "price": "1399",
+        "isAvailable": true
+    },
+    {
+        "productId": "2",
+        "name": "Iphone 12",
+        "price": "1299",
+        "isAvailable": true
+    },
+    {
+        "productId": "3",
+        "name": "Iphone 11",
+        "price": "1099",
+        "isAvailable": false
+    },
+    {
+        "productId": "4",
+        "name": "Iphone 10",
+        "price": "999",
+        "isAvailable": true
+    },
+    {
+        "productId": "5",
+        "name": "Iphone 9",
+        "price": "899",
+        "isAvailable": false
+    },
+    {
+        "productId": "6",
+        "name": "Iphone 8",
+        "price": "799",
+        "isAvailable": false
+    },
+    {
+        "productId": "9",
+        "name": "Iphone 13",
+        "price": "899",
+        "isAvailable": true
+    },
+    {
+        "productId": "19",
+        "name": "Iphone 13",
+        "price": "2",
+        "isAvailable": true
+    },
+    {
+        "productId": "129",
+        "name": "Iphone 13",
+        "price": "2",
+        "isAvailable": true
+    }
+]

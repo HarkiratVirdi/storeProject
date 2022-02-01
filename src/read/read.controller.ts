@@ -1,14 +1,24 @@
-import { Body, Controller, Get, Param } from '@nestjs/common';
-import db from '../db/database.json';
-import * as fs from 'fs'
-import { readDB } from 'src/utils/readDb';
+import {  Controller, Get, Query } from '@nestjs/common';
+import { errorResponse, findProductsByIds, successResponse } from 'src/utils/readDb';
 
 @Controller('read')
 export class ReadController {
-    @Get(':ids')
-    read(@Param() param) : Array<{}>
+    @Get()
+    read(@Query() queryPassed)
     {
-     
-        return readDB();
+        //destructing the ids obj from the query
+        const {ids} = queryPassed;
+
+        //converting the string of ids to an Array. 
+        const convertToArray =  ids.split(",");
+        
+        //finding the products by Ids using findProductsByIDS function.
+        try{
+            const products = findProductsByIds(convertToArray);
+            return successResponse(products);
+        }catch(err){
+            console.log("err", err);
+            return errorResponse(403, err);
+        }
     }
 }
