@@ -12,7 +12,7 @@ describe('DeleteController', () => {
     controller = module.get<DeleteController>(DeleteController);
   });
 
-  it('should be defined', () => {
+  it('Delete controller should be defined', () => {
     expect(controller).toBeDefined();
   });
 });

@@ -1,6 +1,6 @@
-import { findIndexOfProduct, findProductById, findProductsByIds, readDB } from "./readDb"
+import { changeDataInDB, findIndexOfProduct, findProductById, findProductsByIds, readDB } from "./readDb"
 
-const products = [{ productId: "1", name: "testing 1", price: "100", isAvailable: true }, { productId: "2", name: "testing 2", price: "1100", isAvailable: false }];
+const products = [{ productId: "1", name: "testing 1", price: 100, isAvailable: true }, { productId: "2", name: "testing 2", price: 1100, isAvailable: false }];
 
 describe(('Find Product By Ids function'), () => {
     test("find products with ID if object is Available", () => {
@@ -44,3 +44,12 @@ describe('Find Index of product function', () => {
         expect(findIndexOfProduct('121321321', products)).toBe(-1);
     })
 });
+
+describe("read Db function", () => {
+    test("should read all products in JSON file", () => {
+        // expect.assertions(1);
+        expect(readDB('src/db/test.json')).toStrictEqual(
+            products
+        )
+    })
+})

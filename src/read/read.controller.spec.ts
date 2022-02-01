@@ -1,5 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ReadController } from './read.controller';
+import { createMocks } from 'node-mocks-http';
+import isUserLogged from '../middlewares/checkIfUserLogged';
 
 describe('ReadController', () => {
   let controller: ReadController;
@@ -12,7 +14,8 @@ describe('ReadController', () => {
     controller = module.get<ReadController>(ReadController);
   });
 
-  it('should be defined', () => {
+
+  it('Read Controller should be defined', () => {
     expect(controller).toBeDefined();
-  });
+  })
 });

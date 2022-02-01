@@ -1,5 +1,5 @@
 import {  Controller, Get, Query } from '@nestjs/common';
-import { errorResponse, findProductsByIds, successResponse } from 'src/utils/readDb';
+import { errorResponse, findProductsByIds, successResponse } from '../utils/readDb';
 
 @Controller('read')
 export class ReadController {

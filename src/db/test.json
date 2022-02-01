@@ -1,0 +1,1 @@
+[{ "productId": "1", "name": "testing 1","price": 100, "isAvailable": true }, { "productId": "2", "name": "testing 2", "price": 1100, "isAvailable": false }]

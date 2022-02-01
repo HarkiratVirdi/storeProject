@@ -1,7 +1,9 @@
 import { readFileSync, writeFileSync } from 'fs';
+import path from 'path';
 
-export const readDB = () => {
-  let rawdata = readFileSync('src/db/database.json');
+
+export const readDB = (file = "src/db/database.json") => {
+  let rawdata = readFileSync(file);
   return JSON.parse(rawdata.toString());
 };
 
@@ -13,8 +15,8 @@ export const findIndexOfProduct = (id, db = readDB()) => {
    return db.findIndex((prod) => prod.productId == id)
 }
 
-export const changeDataInDB = (data) => {
-    return writeFileSync('src/db/database.json', JSON.stringify(data));
+export const changeDataInDB = (data, file='src/db/database.json') => {
+    return writeFileSync(file, JSON.stringify(data));
 }
 
 export const findProductsByIds = (ids, db = readDB()) => {

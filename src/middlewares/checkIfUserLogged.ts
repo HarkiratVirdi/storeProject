@@ -1,8 +1,7 @@
-import { NestMiddleware } from "@nestjs/common";
-import { errorResponse } from "src/utils/readDb";
+import { errorResponse } from "../utils/readDb";
 
-export default class isUserLogged implements NestMiddleware{
-    use(req, res, next ){
+ const isUserLogged = (req, res, next) => {
        return req.headers.authorization ? next() : res.json(errorResponse(401, "User token missing"));
-    }   
 }
+
+export default isUserLogged;
