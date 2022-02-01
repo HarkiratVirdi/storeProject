@@ -1,6 +1,4 @@
 import { readFileSync, writeFileSync } from 'fs';
-import path from 'path';
-
 
 export const readDB = (file = "src/db/database.json") => {
   let rawdata = readFileSync(file);

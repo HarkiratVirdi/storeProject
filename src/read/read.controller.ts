@@ -1,9 +1,13 @@
 import {  Controller, Get, Query } from '@nestjs/common';
+import { ApiCreatedResponse, ApiQuery, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { errorResponse, findProductsByIds, successResponse } from '../utils/readDb';
 
 @Controller('read')
 export class ReadController {
     @Get()
+    @ApiCreatedResponse({description: 'Fetching Products'})
+    @ApiUnauthorizedResponse({description: "User Token Missing"})
+    @ApiQuery({name: "ids", required: true, type: String, description: 'id of products to search'})
     read(@Query('ids') ids)
     {
         //converting the string of ids to an Array. 

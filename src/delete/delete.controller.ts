@@ -1,4 +1,5 @@
 import { Controller, Delete, Query } from '@nestjs/common';
+import { ApiCreatedResponse, ApiQuery, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import {
     changeDataInDB,
   errorResponse,
@@ -11,9 +12,12 @@ import {
 @Controller('delete')
 export class DeleteController {
   @Delete()
+  @ApiCreatedResponse({description: 'Deleting Products with IDS'})
+  @ApiUnauthorizedResponse({description: "User Token Missing"})
+  @ApiQuery({name: "ids", required: true, type: String, description: 'id of products to search'})
   remove(@Query('ids') ids) {
     const originalData = readDB();
-    const convertToArray = ids.split(",").sort((a, b) => a - b);
+    const convertToArray = ids.split(",");
     try {
       const allproductsWithIDS = findProductsByIds(convertToArray);
 

@@ -1,11 +1,16 @@
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { ApiBody, ApiCreatedResponse, ApiUnauthorizedResponse } from '@nestjs/swagger';
 import { changeDataInDB, errorResponse, findIndexOfProduct, readDB, successResponse} from 'src/utils/readDb';
-import CreateProductDto  from '../dto/product';
+import {CreateProductDTO}  from '../dto/product.dto';
 
 @Controller('upsert')
 export class UpsertController {
  @Post()
-    upsert(@Body() bodyObj: Array<CreateProductDto>)
+ @ApiCreatedResponse({description: "Products updated or added"})
+ @ApiUnauthorizedResponse({description: "User Token Missing"})
+ @ApiBody({type: [CreateProductDTO]})
+ @UsePipes(ValidationPipe)
+    upsert(@Body() bodyObj: Array<CreateProductDTO>)
     {
         try{
         const originalData = readDB();
