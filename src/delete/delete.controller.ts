@@ -7,7 +7,7 @@ import {
   findProductsByIds,
   readDB,
   successResponse,
-} from 'src/utils/readDb';
+} from '../utils/readDb';
 
 @Controller('delete')
 export class DeleteController {
